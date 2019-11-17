@@ -1,22 +1,25 @@
 package com.assir.yassine.rest;
 
 
-import javax.inject.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("test")
-@Singleton
+@Path("{pathParam}/test")
 public class MyResource {
 
-    private int count;
+    /*
+    With @Singleton resource, this does not work.
+    Because, singleton resources are instantiated during application startup.
+    So, you can not inject request-specific information to their member variables.
+     */
+
+    @PathParam("pathParam") private String pathParamExample;
+    @QueryParam("query") private String queryParamExample;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String testMethod() {
-        count += 1;
-        return "Test works! This method was called " + count + " time(s)";
+        return "Test works! Path param used: " + pathParamExample +
+                " and Query param used: " + queryParamExample;
     }
 }
