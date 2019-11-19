@@ -1,6 +1,10 @@
 package com.assir.yassine.rest;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class MyDate {
+
     private int date;
     private int month;
     private int year;

@@ -14,4 +14,11 @@ public class MyResource {
     public Date testMethod() {
         return Calendar.getInstance().getTime();
     }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    public MyDate getDate(MyDate date) {
+        System.out.println(date);
+        return date;
+    }
 }
