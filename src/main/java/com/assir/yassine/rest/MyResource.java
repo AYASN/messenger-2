@@ -10,15 +10,9 @@ import java.util.Date;
 public class MyResource {
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(value = {"text/shortdate", MediaType.TEXT_PLAIN})
     public Date testMethod() {
         return Calendar.getInstance().getTime();
     }
 
-    @POST
-    @Consumes(MediaType.APPLICATION_XML)
-    public MyDate getDate(MyDate date) {
-        System.out.println(date);
-        return date;
-    }
 }
